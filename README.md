@@ -1,1 +1,142 @@
-# Valentine-
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Be My Valentine?</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffb6c1, #ffe4e1);
+    }.container {
+  text-align: center;
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+.characters {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.characters img {
+  width: 140px;
+}
+
+.buttons {
+  position: relative;
+  height: 120px;
+}
+
+button {
+  padding: 12px 26px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  position: absolute;
+}
+
+#yesBtn {
+  background-color: #ff4d6d;
+  color: white;
+  left: 30%;
+}
+
+#noBtn {
+  background-color: #aaa;
+  color: white;
+  left: 55%;
+}
+
+input {
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  width: 80%;
+  margin-top: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+video {
+  width: 100%;
+  border-radius: 16px;
+}
+
+  </style>
+</head>
+<body><!-- PAGE 1 --><div class="container" id="page1">
+  <div class="characters">
+    <img src="tumblr_okexnjx88P1qc4uvwo1_540.gif" alt="Panda">
+    <img src="bubu-dudu-bubu-dudu-love (1).gif" alt="Polar Bear">
+  </div>
+  <h1>Will you be my Valentine?</h1>
+  <div class="buttons">
+    <button id="yesBtn">Yes 💖</button>
+    <button id="noBtn">No 💔</button>
+  </div>
+</div><!-- PAGE 2 --><div class="container hidden" id="page2">
+  <h1>Yay! 💕</h1>
+  <p>Enter your name:</p>
+  <input type="text" id="nameInput" placeholder="Your name">
+  <p style="margin-top:15px">Type <b>love</b> to continue:</p>
+  <input type="text" id="keyInput" placeholder="Enter key">
+  <br><br>
+  <button onclick="checkKey()" style="position:static;background:#ff4d6d;color:white">Submit 💌</button>
+</div><!-- PAGE 3 --><div class="container hidden" id="page3">
+  <h1 id="finalText">❤️</h1>
+  <video controls autoplay>
+    <source src="VN20260202_043307.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div><script>
+  const noBtn = document.getElementById('noBtn');
+  const yesBtn = document.getElementById('yesBtn');
+
+  const page1 = document.getElementById('page1');
+  const page2 = document.getElementById('page2');
+  const page3 = document.getElementById('page3');
+
+  // NO button runs away
+  noBtn.addEventListener('mouseenter', () => {
+    noBtn.style.left = Math.random() * 70 + '%';
+    noBtn.style.top = Math.random() * 60 + '%';
+  });
+
+  // YES goes to page 2
+  yesBtn.addEventListener('click', () => {
+    page1.classList.add('hidden');
+    page2.classList.remove('hidden');
+  });
+
+  // Check key
+  function checkKey() {
+    const key = document.getElementById('keyInput').value.toLowerCase();
+    const name = document.getElementById('nameInput').value || 'My Love';
+
+    if (key === 'love') {
+      page2.classList.add('hidden');
+      page3.classList.remove('hidden');
+      document.getElementById('finalText').innerText = `I love you, ${name} ❤️`;
+    } else {
+      alert('Wrong key 💔 Try again');
+    }
+  }
+</script></body>
+</html>
